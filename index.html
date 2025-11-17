@@ -1,174 +1,149 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-<meta charset="UTF-8">
-<title>Wellgo 健康 Intake 问卷（标准版）</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-    body { font-family: Arial, sans-serif; margin: 20px; color: #333; }
-    h2 { margin-top: 40px; }
-    .form-section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
-    label { font-weight: bold; display: block; margin-top: 15px; }
-    input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border-radius: 6px; border: 1px solid #ccc; }
-    .checkbox-group, .radio-group { margin-left: 15px; }
-    .checkbox-group label, .radio-group label { font-weight: normal; margin-top: 5px; display: block; }
-    button { background: #3aa36a; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 20px; }
-    button:hover { background: #2e8554; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellgo Intake 表单</title>
+
+    <style>
+        /* ======== 全局基础样式 ======== */
+        body {
+            margin: 0;
+            font-family: "Arial", sans-serif;
+            background: #f7f7f7;
+            color: #333;
+        }
+
+        /* ======== 顶部导航栏 ======== */
+        .navbar {
+            width: 100%;
+            background: #0A8A62; /* Wellgo 品牌绿色 */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            box-sizing: border-box;
+        }
+
+        /* 左侧 Logo */
+        .navbar-logo {
+            height: 42px;
+        }
+
+        /* 右侧语言切换按钮 */
+        .navbar-lang {
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .navbar-lang:hover {
+            opacity: 0.8;
+        }
+
+        /* ======== 表单内容卡片 ======== */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #0A8A62;
+            margin-top: 0;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 12px;
+            display: block;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        /* 提交按钮 */
+        .submit-btn {
+            background: #0A8A62;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #086b4d;
+        }
+    </style>
 </head>
 
 <body>
-<h1>Wellgo 健康 Intake 问卷（标准版）</h1>
 
-<form action="https://formspree.io/f/mpwkkgjl" method="POST" enctype="multipart/form-data">
+    <!-- ======== 顶部导航栏（左 Logo + 右语言按钮） ======== -->
+    <div class="navbar">
+        <img src="Pasted-20251111-210730_pixian_ai.png" class="navbar-logo">
+        <div class="navbar-lang">中文 ｜ EN</div>
+    </div>
 
-<!-- 基本信息 -->
-<div class="form-section">
-<h2>一、基本信息</h2>
+    <!-- 页面主容器（下一段继续） -->
+    <!-- ======== 主内容容器（表单卡片） ======== -->
+    <div class="container">
+        <h2>健康问诊 Intake 表单</h2>
+        <p>请根据真实情况填写以下信息，提交后将自动发送至 Wellgo 专业团队。</p>
 
-<label>姓名</label>
-<input type="text" name="姓名" required>
+        <form action="https://formspree.io/f/mpwkkgjl" method="POST">
 
-<label>性别</label>
-<select name="性别" required>
-    <option value="男">男</option>
-    <option value="女">女</option>
-</select>
+            <!-- 基本信息 -->
+            <label>姓名</label>
+            <input type="text" name="姓名" required>
 
-<label>年龄</label>
-<input type="number" name="年龄" min="1" required>
+            <label>年龄</label>
+            <input type="number" name="年龄" required>
 
-<label>联系电话</label>
-<input type="text" name="联系电话" required>
+            <label>联系方式（微信或电话）</label>
+            <input type="text" name="联系方式" required>
 
-<label>最近是否做过体检？</label>
-<select name="是否体检" required>
-    <option value="是">是</option>
-    <option value="否">否</option>
-</select>
+            <!-- 主诉问题 -->
+            <label>目前主要健康困扰（可多选或填写）</label>
+            <textarea name="主要困扰" rows="4" placeholder="例：失眠、焦虑、肠胃不适、疲劳、月经异常、皮肤问题等"></textarea>
 
-<label>上传体检报告（图片或 PDF）</label>
-<input type="file" name="体检报告">
-</div>
+            <!-- 症状描述 -->
+            <label>症状详细描述</label>
+            <textarea name="症状描述" rows="5" placeholder="请描述症状出现的时间、频率、严重程度、诱发因素等"></textarea>
 
-<!-- 主要症状 -->
-<div class="form-section">
-<h2>二、主要症状（主诉）</h2>
-<label>请简述您目前最困扰的 1–3 个健康问题</label>
-<textarea name="主要症状" rows="4" required></textarea>
-</div>
+            <!-- 生活习惯 -->
+            <label>生活方式（作息、饮食、运动）</label>
+            <textarea name="生活方式" rows="4" placeholder="例：睡眠时长、习惯；每日饮食；一周运动频率等"></textarea>
 
-<!-- 系统筛查 -->
-<div class="form-section">
-<h2>三、系统筛查（多选）</h2>
+            <!-- 既往病史 -->
+            <label>是否有疾病史 / 正在用药</label>
+            <textarea name="疾病史" rows="4" placeholder="如有请填写：疾病名称、诊断时间、治疗情况、用药名称等"></textarea>
 
-<div class="checkbox-group">
-<label><input type="checkbox" name="系统筛查[]" value="消化系统"> 消化系统（胃胀、反酸、便秘、腹泻）</label>
-<label><input type="checkbox" name="系统筛查[]" value="代谢系统"> 代谢系统（血糖、体重、疲劳、饥饿感）</label>
-<label><input type="checkbox" name="系统筛查[]" value="心血管系统"> 心血管系统（血压、血脂、心悸）</label>
-<label><input type="checkbox" name="系统筛查[]" value="肝胆系统"> 肝胆系统（脂肪肝、转氨酶）</label>
-<label><input type="checkbox" name="系统筛查[]" value="免疫系统"> 免疫系统（感冒、过敏、鼻炎、湿疹）</label>
-<label><input type="checkbox" name="系统筛查[]" value="自身免疫系统"> 自身免疫系统（甲状腺、ANA、风湿）</label>
-<label><input type="checkbox" name="系统筛查[]" value="神经系统"> 神经系统（头痛、失眠、焦虑）</label>
-<label><input type="checkbox" name="系统筛查[]" value="女性健康"> 女性健康（月经、痛经、更年期）</label>
-<label><input type="checkbox" name="系统筛查[]" value="男性健康"> 男性健康（疲劳、压力）</label>
-<label><input type="checkbox" name="系统筛查[]" value="皮肤系统"> 皮肤系统（痤疮、暗沉、瘙痒）</label>
-<label><input type="checkbox" name="系统筛查[]" value="儿童健康"> 儿童健康（注意力、情绪、免疫）</label>
-<label>其他：<input type="text" name="系统筛查_其他"></label>
-</div>
-</div>
+            <!-- 检查结果 -->
+            <label>近期体检或化验结果（可粘贴重要项目）</label>
+            <textarea name="化验结果" rows="4" placeholder="如血脂、血糖、肝功能、甲状腺、超声、维生素D等"></textarea>
 
-<!-- 症状持续时间 -->
-<div class="form-section">
-<h2>四、症状情况</h2>
+            <!-- 目标 -->
+            <label>你希望本次调理达到什么目标？</label>
+            <textarea name="健康目标" rows="4" placeholder="例：改善睡眠、减轻焦虑、调理肠胃、提升能量、调经、控制体重等"></textarea>
 
-<label>症状持续时间</label>
-<select name="症状持续时间">
-    <option value="小于1个月">小于1个月</option>
-    <option value="1–3个月">1–3个月</option>
-    <option value="3–12个月">3–12个月</option>
-    <option value="大于1年">大于1年</option>
-</select>
-
-<label>症状频率</label>
-<select name="症状频率">
-    <option value="偶尔">偶尔</option>
-    <option value="每周数次">每周数次</option>
-    <option value="每天">每天</option>
-    <option value="持续存在">持续存在</option>
-</select>
-
-<label>症状对生活的影响程度</label>
-<select name="症状影响程度">
-    <option value="轻微">轻微</option>
-    <option value="中等">中等</option>
-    <option value="明显影响生活">明显影响生活</option>
-</select>
-</div>
-
-<!-- 生活方式 -->
-<div class="form-section">
-<h2>五、生活方式</h2>
-
-<label>睡眠情况</label>
-<select name="睡眠">
-    <option value="良好">良好</option>
-    <option value="一般">一般</option>
-    <option value="差">差</option>
-    <option value="失眠">失眠</option>
-</select>
-
-<label>饮食习惯（多选）</label>
-<div class="checkbox-group">
-<label><input type="checkbox" name="饮食习惯[]" value="规律三餐"> 规律三餐</label>
-<label><input type="checkbox" name="饮食习惯[]" value="经常外食"> 经常外食</label>
-<label><input type="checkbox" name="饮食习惯[]" value="不吃早餐"> 不吃早餐</label>
-<label><input type="checkbox" name="饮食习惯[]" value="重油重盐"> 重油重盐</label>
-<label><input type="checkbox" name="饮食习惯[]" value="高糖甜品"> 高糖甜品</label>
-<label><input type="checkbox" name="饮食习惯[]" value="素食为主"> 素食为主</label>
-</div>
-
-<label>是否长期熬夜</label>
-<select name="熬夜">
-    <option value="是">是</option>
-    <option value="否">否</option>
-</select>
-
-<label>慢性病史（多选）</label>
-<div class="checkbox-group">
-<label><input type="checkbox" name="慢性病史[]" value="无"> 无</label>
-<label><input type="checkbox" name="慢性病史[]" value="高血压"> 高血压</label>
-<label><input type="checkbox" name="慢性病史[]" value="糖尿病"> 糖尿病</label>
-<label><input type="checkbox" name="慢性病史[]" value="甲状腺异常"> 甲状腺异常</label>
-<label><input type="checkbox" name="慢性病史[]" value="脂肪肝"> 脂肪肝</label>
-<label><input type="checkbox" name="慢性病史[]" value="自身免疫病"> 自身免疫病</label>
-<label>其他：<input type="text" name="慢性病史_其他"></label>
-</div>
-
-<label>正在服用的药物 / 保健品</label>
-<textarea name="用药情况" rows="4"></textarea>
-</div>
-
-<!-- 调理目标 -->
-<div class="form-section">
-<h2>六、调理目标（多选）</h2>
-
-<div class="checkbox-group">
-<label><input type="checkbox" name="调理目标[]" value="改善主要症状"> 改善主要症状</label>
-<label><input type="checkbox" name="调理目标[]" value="改善睡眠"> 改善睡眠</label>
-<label><input type="checkbox" name="调节血糖"> 调节血糖</label>
-<label><input type="checkbox" name="调节体重"> 调节体重</label>
-<label><input type="checkbox" name="提高免疫力"> 提高免疫力</label>
-<label><input type="checkbox" name="改善情绪"> 改善情绪</label>
-<label><input type="checkbox" name="改善皮肤"> 改善皮肤</label>
-<label><input type="checkbox" name="改善肠胃"> 改善肠胃</label>
-<label><input type="checkbox" name="改善疲劳"> 改善疲劳</label>
-<label>其他：<input type="text" name="调理目标_其他"></label>
-</div>
-</div>
-
-<button type="submit">提交 Intake 表单</button>
-
-</form>
+            <!-- 提交按钮 -->
+            <button type="submit" class="submit-btn">提交表单</button>
+        </form>
+    </div>
+    <!-- ======== 页面结束 ======== -->
 </body>
 </html>
